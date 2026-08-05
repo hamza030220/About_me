@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hamza Slimani — ZEUS | IoT &amp; Embedded Systems Engineer</title>
+<meta name="description" content="Hamza Slimani (ZEUS) — IoT & Embedded Systems Engineering student building AI, robotics, and software systems.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,400;0,500;0,600;0,700;1,500&family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- top scroll progress rail -->
+<div class="scroll-rail" aria-hidden="true"><div class="scroll-rail-fill" id="scroll-rail-fill"></div></div>
+
+<!-- custom cursor (desktop only, disables itself on touch) -->
+<div class="cursor" id="cursor" aria-hidden="true">
+  <div class="cursor-ring"></div>
+  <div class="cursor-dot"></div>
+  <div class="cursor-hud mono"><span id="cursor-hud-text">READY</span></div>
+</div>
+
+<!-- ambient background layer -->
+<div class="bg-grid" aria-hidden="true"></div>
+<div class="bg-noise" aria-hidden="true"></div>
+<div class="bg-scan" aria-hidden="true"></div>
+<svg class="bg-circuit-ambient" aria-hidden="true" viewBox="0 0 400 2400" preserveAspectRatio="xMidYMid slice">
+  <g class="amb-lines">
+    <path d="M0 60 H140 V220 H60 V420 H260 V180 H400" />
+    <path d="M0 340 H220 V560 H100 V760 H340 V620 H400" />
+    <path d="M0 900 H160 V1100 H320 V960 H400" />
+    <path d="M0 1240 H260 V1420 H80 V1640 H360" />
+    <path d="M0 1780 H180 V1980 H60 V2160 H300 V2040 H400" />
+    <path d="M0 2220 H220 V2400" />
+  </g>
+</svg>
+<div class="bg-particles" id="bg-particles" aria-hidden="true"></div>
+
+<!-- ============ NAV ============ -->
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="#top" class="nav-brand">
+      <span class="nav-prompt">hamza@zeus</span><span class="nav-tilde">:~$</span>
+    </a>
+    <div class="nav-links">
+      <a href="#projects">projects</a>
+      <a href="#skills">skills</a>
+      <a href="#lab">create_mode</a>
+      <a href="#connect">connect</a>
+    </div>
+    <div class="nav-status">
+      <span class="dot dot--live" aria-hidden="true"></span>
+      <span class="nav-uptime" id="uptime">UPTIME 00:00:00</span>
+    </div>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<header class="hero" id="top">
+  <div class="hero-circuit" aria-hidden="true">
+    <svg viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice">
+      <g class="circuit-lines">
+        <path class="trace" d="M0 120 H260 V260 H520 V80 H900 V320 H1200" />
+        <path class="trace trace--b" d="M0 420 H160 V560 H460 V680 H820 V500 H1200" />
+        <path class="trace trace--c" d="M60 0 V180 H340 V400 H620 V180 H860 V0" />
+        <path class="trace trace--d" d="M1200 640 H980 V760 H700 V620 H400 V760" />
+        <path class="trace trace--e" d="M0 700 H240 V560 H60" />
+      </g>
+      <g class="circuit-nodes">
+        <circle cx="260" cy="120" r="5" />
+        <circle cx="520" cy="260" r="5" />
+        <circle cx="900" cy="80" r="5" />
+        <circle cx="160" cy="420" r="5" />
+        <circle cx="460" cy="560" r="5" />
+        <circle cx="820" cy="680" r="5" />
+        <circle cx="340" cy="0" r="5" />
+        <circle cx="620" cy="400" r="5" />
+        <circle cx="860" cy="180" r="5" />
+        <circle cx="980" cy="640" r="5" />
+        <circle cx="700" cy="760" r="5" />
+        <circle cx="400" cy="620" r="5" />
+      </g>
+    </svg>
+  </div>
+
+  <div class="hero-inner">
+    <div class="hero-terminal" id="boot-terminal">
+      <div class="term-bar">
+        <span class="term-dot"></span><span class="term-dot"></span><span class="term-dot"></span>
+        <span class="term-title">zeus@boot — 80x12</span>
+      </div>
+      <div class="term-body" id="term-body"></div>
+    </div>
+
+    <div class="hero-title-block">
+      <p class="eyebrow mono">// ENGINEER.PROFILE</p>
+      <h1 class="hero-name flicker-in">
+        Hamza<br><span class="hero-name-alt">Slimani</span>
+      </h1>
+      <div class="hero-badge">
+        <svg class="badge-glyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 L4 14 h6 l-1 8 9-12 h-6 z"/></svg>
+        <span class="glitch" data-text="ZEUS" id="zeus-glitch">ZEUS</span>
+      </div>
+      <p class="hero-role mono">IoT &amp; Embedded Systems Engineering Student</p>
+      <p class="hero-desc">Building software, AI systems, and connected devices — then figuring out why they don't work, and why they suddenly do.</p>
+      <div class="hero-cta">
+        <a href="#projects" class="btn btn--primary" data-magnetic>View Projects</a>
+        <a href="#connect" class="btn btn--ghost" data-magnetic>Get In Touch</a>
+      </div>
+    </div>
+  </div>
+
+  <a href="#about" class="scroll-cue mono" aria-label="Scroll down">
+    <span>scroll</span>
+    <span class="scroll-line"></span>
+  </a>
+</header>
+
+<main>
+
+<!-- ============ ABOUT ============ -->
+<section class="section about" id="about">
+  <div class="container">
+    <p class="eyebrow mono reveal">$ whoami</p>
+    <p class="about-text reveal">
+      I'm an engineering student who can't leave a problem alone once I've noticed it —
+      I have to at least <em>try</em> to build something that fixes it. That habit turns small ideas
+      into full projects: web platforms, computer vision pipelines, robots, networks.
+      It also means late debugging sessions, dead ends, and learning mostly by breaking things first.
+    </p>
+    <div class="tag-row reveal">
+      <span class="chip">Curiosity</span>
+      <span class="chip">Creativity</span>
+      <span class="chip">Engineering mindset</span>
+      <span class="chip">Problem solving</span>
+      <span class="chip">Experimentation</span>
+      <span class="chip">Passion for tech</span>
+    </div>
+    <p class="about-quip mono reveal">// Debugging since forever. Coffee.exe running.</p>
+  </div>
+</section>
+
+<!-- ============ PROJECTS ============ -->
+<section class="section projects" id="projects">
+  <div class="container">
+    <p class="eyebrow mono reveal">$ ls ~/projects --featured</p>
+    <h2 class="section-title reveal">Things I've built</h2>
+
+    <div class="project-grid project-grid--featured">
+
+      <article class="pcb-card pcb-card--lg reveal">
+        <div class="pcb-card-head">
+          <span class="pcb-id mono">MOD-01</span>
+          <span class="led" aria-hidden="true"></span>
+        </div>
+        <p class="pcb-cat mono">AI + Web Platform</p>
+        <h3 class="pcb-title">ScanToSee</h3>
+        <p class="pcb-desc">
+          A digital menu platform for restaurants and cafés — scan a QR code, browse the menu
+          instantly, no app needed. Businesses get a dashboard to build and edit their own menus,
+          in multiple languages, without touching code. What started as "replace paper menus with
+          a QR code" grew into a full ecosystem.
+        </p>
+        <div class="pcb-sub">
+          <p class="pcb-sub-label mono">↳ handwritten menu scanner (CV pipeline)</p>
+          <p class="pcb-sub-text">Image capture → preprocessing → handwriting recognition → text
+          extraction → structured menu data. Explored OCR, PyTorch, TensorFlow, dataset generation,
+          handwriting synthesis. Human handwriting is complicated — especially when everyone writes
+          like they invented their own alphabet.</p>
+        </div>
+        <div class="pcb-tech mono">
+          <span>Symfony</span><span>PHP</span><span>MySQL</span><span>Python</span><span>Computer Vision</span><span>Machine Learning</span>
+        </div>
+        <p class="pcb-date mono">Completed August 2026</p>
+      </article>
+
+      <article class="pcb-card pcb-card--lg reveal">
+        <div class="pcb-card-head">
+          <span class="pcb-id mono">MOD-02</span>
+          <span class="led" aria-hidden="true"></span>
+        </div>
+        <p class="pcb-cat mono">Agritech Platform · Web + Desktop</p>
+        <h3 class="pcb-title">FIRMA</h3>
+        <p class="pcb-desc">
+          Agricultural management platform, delivered as both a Symfony web app and a JavaFX
+          desktop app. Five modules: Marketplace, Events, Technicians, Forum, and User Management.
+          Role-based authentication for Admin and Client accounts. Marketplace includes product
+          CRUD and Stripe payment integration.
+        </p>
+        <ul class="pcb-list">
+          <li>AI-based diagnostic module for crop/equipment issues</li>
+          <li>PDF report generation</li>
+          <li>Geolocation-based technician discovery</li>
+          <li>RESTful architecture with Doctrine ORM</li>
+        </ul>
+        <div class="pcb-tech mono">
+          <span>Symfony</span><span>JavaFX</span><span>PHP</span><span>MySQL</span><span>Doctrine ORM</span><span>Stripe API</span>
+        </div>
+        <p class="pcb-date mono">Completed March 2026</p>
+      </article>
+
+      <article class="pcb-card pcb-card--lg pcb-card--wip reveal">
+        <div class="pcb-card-head">
+          <span class="pcb-id mono">MOD-03</span>
+          <span class="led led--wip" aria-hidden="true"></span>
+        </div>
+        <p class="pcb-cat mono">IoT / Robotics · Personal Project</p>
+        <h3 class="pcb-title">Agribot</h3>
+        <p class="pcb-desc">
+          A small agricultural robot prototype built to sense, move, and react to its environment
+          on its own — an ESP32 wired to motor drivers, a servo, an ultrasonic sensor, a relay
+          module, and a mini water pump, all working together in an automation loop.
+        </p>
+        <div class="pcb-tech mono">
+          <span>ESP32</span><span>Motor Control</span><span>Ultrasonic Sensing</span><span>Embedded C</span><span>Wireless Comm</span>
+        </div>
+        <p class="pcb-status mono">// status: IN PROGRESS — building it on my own time</p>
+      </article>
+
+    </div>
+
+    <p class="eyebrow mono reveal projects-more-label">$ ls ~/projects --more</p>
+    <div class="project-grid project-grid--sm">
+
+      <article class="pcb-card reveal">
+        <div class="pcb-card-head">
+          <span class="pcb-id mono">MOD-04</span>
+          <span class="led" aria-hidden="true"></span>
+        </div>
+        <p class="pcb-cat mono">Web Development</p>
+        <h3 class="pcb-title pcb-title--sm">Green.tn</h3>
+        <p class="pcb-desc pcb-desc--sm">Website for a startup promoting energy-generating bicycles, with a reward system for ecological behaviour. Frontend–backend integration via RESTful APIs.</p>
+        <div class="pcb-tech mono"><span>Frontend</span><span>Backend</span><span>REST APIs</span></div>
+        <p class="pcb-date mono">Jan – May 2025</p>
+      </article>
+
+      <div class="pcb-link-pair">
+        <article class="pcb-card reveal">
+          <div class="pcb-card-head">
+            <span class="pcb-id mono">MOD-05</span>
+            <span class="led" aria-hidden="true"></span>
+          </div>
+          <p class="pcb-cat mono">Desktop Software</p>
+          <h3 class="pcb-title pcb-title--sm">AutoCare</h3>
+          <p class="pcb-desc pcb-desc--sm">Workshop management application with a Qt interface: customer management, appointment scheduling, and billing, connected to backend services via database integration.</p>
+          <div class="pcb-tech mono"><span>C++</span><span>Qt</span><span>SQL</span></div>
+          <p class="pcb-date mono">2024</p>
+        </article>
+
+        <div class="pcb-link-connector" aria-hidden="true">
+          <svg class="pcb-link-svg" viewBox="0 0 40 100" preserveAspectRatio="none">
+            <path class="pcb-link-trace" d="M20 0 V38 M20 62 V100" />
+            <circle class="pcb-link-node" cx="20" cy="6" r="3.5" />
+            <circle class="pcb-link-node" cx="20" cy="94" r="3.5" />
+          </svg>
+          <span class="pcb-link-tag mono">LINKED</span>
+        </div>
+
+        <article class="pcb-card reveal">
+          <div class="pcb-card-head">
+            <span class="pcb-id mono">MOD-06</span>
+            <span class="led" aria-hidden="true"></span>
+          </div>
+          <p class="pcb-cat mono">AI / Computer Vision</p>
+          <h3 class="pcb-title pcb-title--sm">Plate Recognition</h3>
+          <p class="pcb-desc pcb-desc--sm">Camera → image processing → plate detection → character recognition → extracted vehicle data.</p>
+          <div class="pcb-tech mono"><span>Computer Vision</span><span>Image Processing</span></div>
+        </article>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ SKILLS ============ -->
+<section class="section skills" id="skills">
+  <div class="container">
+    <p class="eyebrow mono reveal">$ system_info --specs</p>
+    <h2 class="section-title reveal">Stack &amp; specs</h2>
+
+    <div class="spec-sheet reveal">
+      <div class="spec-row">
+        <span class="spec-key mono">LANGUAGES</span>
+        <span class="spec-val mono">Python · Java · C · C++ · mikroC · PL/SQL · HTML · PHP · JavaScript</span>
+      </div>
+      <div class="spec-row">
+        <span class="spec-key mono">FRAMEWORKS</span>
+        <span class="spec-val mono">Symfony · JavaFX · Qt · React Native</span>
+      </div>
+      <div class="spec-row">
+        <span class="spec-key mono">AI / CV</span>
+        <span class="spec-val mono">OpenCV · PyTorch · TensorFlow · Computer Vision · OCR</span>
+      </div>
+      <div class="spec-row">
+        <span class="spec-key mono">EMBEDDED</span>
+        <span class="spec-val mono">ESP32 · Arduino · Sensors · Robotics · IoT Architectures</span>
+      </div>
+      <div class="spec-row">
+        <span class="spec-key mono">SOFTWARE &amp; TOOLS</span>
+        <span class="spec-val mono">MS Office · Canva · Adobe Premiere Pro · Photoshop · Illustrator · Unity · Blender · SolidWorks · Flutter Flow</span>
+      </div>
+      <div class="spec-row">
+        <span class="spec-key mono">DEV TOOLS</span>
+        <span class="spec-val mono">Git · GitHub · Linux · VS Code · IntelliJ · Qt Creator</span>
+      </div>
+      <div class="spec-row">
+        <span class="spec-key mono">SOFT SKILLS</span>
+        <span class="spec-val mono">Leadership · Event Management · Public Speaking · Teamwork · Problem Solving</span>
+      </div>
+      <div class="spec-row">
+        <span class="spec-key mono">LANGUAGES (SPOKEN)</span>
+        <span class="spec-val mono">Arabic — Native · French — B2 · English — B2</span>
+      </div>
+      <div class="spec-row">
+        <span class="spec-key mono">CERTIFICATIONS</span>
+        <span class="spec-val mono">French B2, Institut Français de Tunis · English B2, IELTS (British Council)</span>
+      </div>
+    </div>
+
+    <div class="net-log reveal">
+      <div class="net-log-head mono">network_lab.log</div>
+      <pre class="net-log-body mono">$ topics
+  IPv4 addressing, Subnetting, VLSM, DHCP, DNS, NAT, OSPF routing, Monitoring
+$ tools
+  GNS3, Linux, Prometheus, Grafana
+$ builds
+  Router backbone simulation · Network architecture design · Monitoring systems</pre>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TECH TICKER ============ -->
+<section class="ticker" aria-hidden="true">
+  <div class="ticker-track">
+    <span>ESP32</span><span>·</span><span>Symfony</span><span>·</span><span>PyTorch</span><span>·</span><span>OpenCV</span><span>·</span><span>Arduino</span><span>·</span><span>JavaFX</span><span>·</span><span>TensorFlow</span><span>·</span><span>MySQL</span><span>·</span><span>Qt</span><span>·</span><span>Linux</span><span>·</span><span>OSPF</span><span>·</span><span>GNS3</span><span>·</span><span>Docker</span><span>·</span><span>REST</span><span>·</span><span>C++</span><span>·</span><span>Python</span><span>·</span>
+    <span>ESP32</span><span>·</span><span>Symfony</span><span>·</span><span>PyTorch</span><span>·</span><span>OpenCV</span><span>·</span><span>Arduino</span><span>·</span><span>JavaFX</span><span>·</span><span>TensorFlow</span><span>·</span><span>MySQL</span><span>·</span><span>Qt</span><span>·</span><span>Linux</span><span>·</span><span>OSPF</span><span>·</span><span>GNS3</span><span>·</span><span>Docker</span><span>·</span><span>REST</span><span>·</span><span>C++</span><span>·</span><span>Python</span><span>·</span>
+  </div>
+</section>
+
+<!-- ============ MODE SWITCH ============ -->
+<section class="mode-switch reveal" id="mode-switch">
+  <div class="container mode-switch-inner">
+    <span class="mode-label mono mode-label--eng">ENGINEER</span>
+    <button type="button" class="toggle-track" id="toggle-track" aria-label="Toggle creative mode" aria-pressed="false">
+      <div class="toggle-knob"></div>
+    </button>
+    <span class="mode-label mono mode-label--create">CREATE</span>
+  </div>
+  <p class="mode-tagline">A project isn't finished when it works. It's finished when people want to use it.</p>
+</section>
+
+<!-- ============ CREATIVE / LAB ============ -->
+<section class="section lab" id="lab">
+  <div class="lab-glow" aria-hidden="true"></div>
+  <div class="container">
+    <p class="eyebrow mono eyebrow--warm reveal">// BEYOND CODE</p>
+    <h2 class="section-title section-title--warm reveal">The creative side</h2>
+    <p class="lab-intro reveal">Engineering isn't the only thing I enjoy. I like the creative side of technology just as much — because a project's story matters as much as its stack.</p>
+
+    <div class="hobby-grid">
+      <article class="hobby-card reveal">
+        <span class="hobby-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.83 2.83 0 0 1 4 4L7 21l-5 1 1-5Z"/><path d="M14.5 5.5 18.5 9.5"/></svg>
+        </span>
+        <h3>Design</h3>
+        <p>UI/UX, visual identity, clean interfaces — choosing colors, layouts, and experiences. A project isn't only about making something work. It's also about making people want to use it.</p>
+      </article>
+      <article class="hobby-card reveal">
+        <span class="hobby-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="1.5"/><path d="M3 7 6 3h3L6 7Z"/><path d="M10 7 13 3h3l-3 4Z"/><path d="M17 7 20 3v4Z"/></svg>
+        </span>
+        <h3>Content &amp; Editing</h3>
+        <p>Video editing, visual storytelling, presentations, project demos — turning complex ideas into something simple and enjoyable to watch.</p>
+      </article>
+      <article class="hobby-card reveal">
+        <span class="hobby-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5.5C4 4.7 4.7 4 5.5 4H12v16H5.5A1.5 1.5 0 0 1 4 18.5Z"/><path d="M20 5.5c0-.8-.7-1.5-1.5-1.5H12v16h6.5a1.5 1.5 0 0 0 1.5-1.5Z"/></svg>
+        </span>
+        <h3>Storytelling</h3>
+        <p>Not just "here's my app" — why the idea started, what problem it solves, the challenges, the mistakes, the result. Every project has a story.</p>
+      </article>
+      <article class="hobby-card reveal">
+        <span class="hobby-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4.5a4.5 4.5 0 0 0-4.5 4.5c0 1.2.4 2 1 2.7-.6.5-1 1.3-1 2.3a3 3 0 0 0 3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3v-11A2.5 2.5 0 0 0 11 3.5"/><circle cx="7" cy="9.5" r=".6" fill="currentColor" stroke="none"/><circle cx="10" cy="13.5" r=".6" fill="currentColor" stroke="none"/><circle cx="7" cy="15.5" r=".6" fill="currentColor" stroke="none"/></svg>
+        </span>
+        <h3>Creative Problem Solving</h3>
+        <p>Mixing technical and creative thinking — interface design, presentations, and unique ways to explain technical ideas with personality.</p>
+      </article>
+      <article class="hobby-card reveal">
+        <span class="hobby-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15 12 3v12Z"/><path d="M12 15 20 11 12 3Z" opacity=".55"/><path d="M2.5 18c1.5 1.5 3 1.5 4.5 0s3-1.5 4.5 0 3 1.5 4.5 0 3-1.5 4.5 0"/></svg>
+        </span>
+        <h3>Sports &amp; Outdoors</h3>
+        <p>Before hours behind screens, I practiced laser sailing. Competition mindset built discipline, patience, adaptability, and problem-solving under pressure.</p>
+      </article>
+    </div>
+
+    <div class="philosophy reveal">
+      <p class="philosophy-line">Technology should not only <span>work</span>.<br>It should <span>communicate</span>.</p>
+      <div class="philosophy-pillars mono">
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M22 12h-3M5 12H2M19.07 4.93l-2.12 2.12M7.05 16.95l-2.12 2.12M19.07 19.07l-2.12-2.12M7.05 7.05 4.93 4.93"/></svg>Engineering</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.83 2.83 0 0 1 4 4L7 21l-5 1 1-5Z"/></svg>Design</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5.5C4 4.7 4.7 4 5.5 4H12v16H5.5A1.5 1.5 0 0 1 4 18.5Z"/><path d="M20 5.5c0-.8-.7-1.5-1.5-1.5H12v16h6.5a1.5 1.5 0 0 0 1.5-1.5Z"/></svg>Storytelling</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.7 10.7c.5.4.7 1 .7 1.6V16h6v-.7c0-.6.3-1.2.7-1.6A6 6 0 0 0 12 3Z"/></svg>Creativity</span>
+      </div>
+      <p class="philosophy-sub">The best creations are the ones people understand, remember, and enjoy.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ EXPERIENCE ============ -->
+<section class="section timeline" id="experience">
+  <div class="container">
+    <p class="eyebrow mono reveal">$ cat career.log</p>
+    <h2 class="section-title reveal">Path so far</h2>
+
+    <div class="tl reveal">
+      <div class="tl-item reveal">
+        <span class="tl-index mono">01</span>
+        <div class="tl-body">
+          <h3>ESPRIT, Tunisia</h3>
+          <p class="tl-meta mono">IoT &amp; Embedded Systems Engineering — 2023 – Present</p>
+          <p>Specializing in connected devices, robotics, and the software that ties them together.</p>
+          <div class="tl-level mono">
+            <span class="tl-level-tag">LVL 04</span>
+            <span class="tl-level-bar"><span class="tl-level-fill"></span></span>
+            <span class="tl-level-progress">4/5</span>
+            <span class="tl-level-status">ALMOST THERE</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-combo reveal">
+        <div class="tl-combo-badge">
+          <span class="tl-combo-word">COMBO</span>
+          <span class="tl-combo-x">×2</span>
+        </div>
+
+        <div class="tl-item tl-item--combo">
+          <span class="tl-index mono">02</span>
+          <div class="tl-body">
+            <h3>Unicom Digital Agency</h3>
+            <p class="tl-meta mono">Development Intern · Bizerte, Tunisia — 2026</p>
+            <p>Second run with the crew — spent this internship building and shipping <strong>ScanToSee</strong>, the QR-menu platform, from prototype to completed product.</p>
+          </div>
+        </div>
+
+        <div class="tl-combo-divider" aria-hidden="true"><span>+1</span></div>
+
+        <div class="tl-item tl-item--combo">
+          <span class="tl-index mono">03</span>
+          <div class="tl-body">
+            <h3>Unicom Digital Agency</h3>
+            <p class="tl-meta mono">Development Intern · Bizerte, Tunisia — Aug – Sep 2025</p>
+            <p>Designed and developed full-stack web applications with PHP, JavaScript, HTML, CSS, and MySQL. Built secure user authentication with password encryption and input validation, and applied web security best practices, database integration, and testing methodologies.</p>
+          </div>
+        </div>
+
+        <p class="tl-combo-quip mono">// same crew, two summers — 2 more combo hits for LEVEL GOD</p>
+      </div>
+
+      <div class="tl-item tl-item--end reveal">
+        <span class="tl-index mono">04</span>
+        <div class="tl-body">
+          <h3>SM Tunis Acier</h3>
+          <p class="tl-meta mono">Maintenance Intern · Bizerte, Tunisia — Jan – Feb 2023</p>
+          <p>Contributed to maintenance of steel manufacturing equipment and industrial machinery — mechanical inspections, fault analysis, and maintenance planning to cut equipment downtime. Applied SolidWorks for mechanical modelling and technical documentation.</p>
+        </div>
+      </div>
+    </div>
+
+    <p class="tl-quip mono reveal">// echo "old habits" -&gt; used to be a sailor, now I just navigate stack traces.</p>
+  </div>
+</section>
+
+<!-- ============ CONNECT / FOOTER ============ -->
+<footer class="section connect" id="connect">
+  <div class="container">
+    <p class="eyebrow mono reveal">$ connect()</p>
+    <h2 class="section-title reveal">Let's build something</h2>
+
+    <pre class="connect-code mono reveal">function connect() {
+  return {
+    github:   "<a href="https://github.com/YOUR_USERNAME" target="_blank" rel="noopener">github.com/YOUR_USERNAME</a>",
+    linkedin: "<a href="https://linkedin.com/in/YOUR_USERNAME" target="_blank" rel="noopener">linkedin.com/in/YOUR_USERNAME</a>",
+    email:    "<a href="mailto:you@email.com">you@email.com</a>",
+    resume:   "<a href="/resume.pdf" target="_blank" rel="noopener">/resume.pdf</a>"
+  };
+}</pre>
+
+    <div class="connect-links reveal">
+      <a href="https://github.com/YOUR_USERNAME" class="btn btn--primary" target="_blank" rel="noopener" data-magnetic>GitHub</a>
+      <a href="https://linkedin.com/in/YOUR_USERNAME" class="btn btn--ghost" target="_blank" rel="noopener" data-magnetic>LinkedIn</a>
+      <a href="mailto:you@email.com" class="btn btn--ghost" data-magnetic>Email</a>
+      <a href="/resume.pdf" class="btn btn--ghost" target="_blank" rel="noopener" data-magnetic>Resume</a>
+    </div>
+
+    <p class="footer-note mono">© <span id="year"></span> Hamza Slimani — ZEUS. Built from scratch, obviously.</p>
+  </div>
+</footer>
+
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>
