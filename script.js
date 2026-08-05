@@ -96,6 +96,10 @@ function resumeFlicker() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+  // touch/small-screen devices skip the heaviest effects entirely
+  // (mousemove-driven tilt/parallax/cursor never fire there anyway)
+  const isTouch = matchMedia('(hover: none)').matches || matchMedia('(pointer: coarse)').matches || window.innerWidth <= 780;
+
   const termBody = document.getElementById('term-body');
   if (termBody) {
     typeTerminal(termBody, bootLines);
@@ -103,9 +107,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // ============================================
   // AMBIENT PARTICLES — drifting sparks in the bg
+  // skipped on mobile: hidden via CSS anyway, and
+  // costly to generate/animate on low-power devices
   // ============================================
   const particleField = document.getElementById('bg-particles');
-  if (particleField) {
+  if (particleField && !isTouch) {
     const COUNT = 22;
     for (let i = 0; i < COUNT; i++) {
       const p = document.createElement('span');
@@ -230,6 +236,14 @@ document.addEventListener('DOMContentLoaded', () => {
   tick();
 
   // ============================================
+  // PAUSE AMBIENT CSS ANIMATIONS WHEN TAB HIDDEN
+  // saves battery/CPU on mobile when backgrounded
+  // ============================================
+  document.addEventListener('visibilitychange', () => {
+    document.body.classList.toggle('tab-hidden', document.hidden);
+  });
+
+  // ============================================
   // FOOTER YEAR
   // ============================================
   const yearEl = document.getElementById('year');
@@ -257,7 +271,6 @@ document.addEventListener('DOMContentLoaded', () => {
   // ============================================
   const cursor = document.getElementById('cursor');
   const hudText = document.getElementById('cursor-hud-text');
-  const isTouch = matchMedia('(hover: none)').matches || window.innerWidth <= 780;
   if (cursor && !isTouch) {
     document.body.classList.add('has-custom-cursor');
     let tx = -100, ty = -100, cx = -100, cy = -100;
@@ -341,11 +354,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // ============================================
   // PROJECT CARDS — 3D tilt + scan beam element
+  // tilt listeners skipped on touch: mousemove never
+  // fires there, so attaching them is dead weight
   // ============================================
   document.querySelectorAll('.pcb-card').forEach(card => {
     const scan = document.createElement('div');
     scan.className = 'pcb-scan';
     card.appendChild(scan);
+    if (isTouch) return;
     card.classList.add('tilt-ready');
 
     let rafId = 0;
@@ -371,20 +387,22 @@ document.addEventListener('DOMContentLoaded', () => {
   // ============================================
   // MAGNETIC BUTTONS — pull toward cursor
   // ============================================
-  document.querySelectorAll('[data-magnetic]').forEach(btn => {
-    const strength = 14;
-    btn.addEventListener('mousemove', (e) => {
-      const r = btn.getBoundingClientRect();
-      const mx = e.clientX - r.left;
-      const my = e.clientY - r.top;
-      const dx = ((mx / r.width) - 0.5) * strength;
-      const dy = ((my / r.height) - 0.5) * strength;
-      btn.style.transform = `translate(${dx}px, ${dy}px)`;
-      btn.style.setProperty('--mx', (mx / r.width * 100) + '%');
-      btn.style.setProperty('--my', (my / r.height * 100) + '%');
+  if (!isTouch) {
+    document.querySelectorAll('[data-magnetic]').forEach(btn => {
+      const strength = 14;
+      btn.addEventListener('mousemove', (e) => {
+        const r = btn.getBoundingClientRect();
+        const mx = e.clientX - r.left;
+        const my = e.clientY - r.top;
+        const dx = ((mx / r.width) - 0.5) * strength;
+        const dy = ((my / r.height) - 0.5) * strength;
+        btn.style.transform = `translate(${dx}px, ${dy}px)`;
+        btn.style.setProperty('--mx', (mx / r.width * 100) + '%');
+        btn.style.setProperty('--my', (my / r.height * 100) + '%');
+      });
+      btn.addEventListener('mouseleave', () => { btn.style.transform = ''; });
     });
-    btn.addEventListener('mouseleave', () => { btn.style.transform = ''; });
-  });
+  }
 
   // ============================================
   // HERO — parallax on mouse move

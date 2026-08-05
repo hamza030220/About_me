@@ -1040,3 +1040,52 @@ body.mode-create .btn--primary{ color: var(--bg); }
 body.mode-create *{
   transition: color .5s var(--ease), background-color .5s var(--ease), border-color .5s var(--ease), box-shadow .5s var(--ease);
 }
+
+/* ============================================
+   MOBILE PERFORMANCE MODE
+   Phones struggle with backdrop-filter blur,
+   always-on 3D layer promotion, and a full
+   particle field. Strip those down below 780px
+   and on touch/coarse-pointer devices, keeping
+   only the cheap effects (reveals, ticker, LEDs).
+============================================ */
+@media (max-width: 780px), (pointer: coarse){
+  /* backdrop-filter blur is one of the most expensive
+     paint operations on mobile GPUs — swap for solid fills */
+  .nav.is-scrolled{
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    background: rgba(11,15,12,0.95);
+  }
+  .hero-terminal{
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    background: rgba(16,22,15,0.97);
+  }
+
+  /* drop always-on 3D layer promotion on every project card;
+     tilt only ever triggered by mousemove, which touch has none of */
+  .pcb-card{
+    transform-style: flat;
+    perspective: none;
+    will-change: auto;
+  }
+  .pcb-card > *{ transform: none; }
+  .pcb-card:hover{ transform: none; }
+
+  /* the loose-bulb idle flicker + circuit/particle ambiance
+     are continuous animations running the whole session —
+     costly on battery/CPU with no real payoff on small screens */
+  .idle-flicker{ animation: none; opacity: 1; }
+  .bg-particles, .bg-circuit-ambient, .hero-circuit{ display: none; }
+  .bg-scan{ animation: none; opacity: .4; }
+
+  /* magnetic pull and hero parallax rely on mousemove, inert on touch */
+  [data-magnetic]{ transition: none; }
+  [data-magnetic]::after{ display: none; }
+}
+
+/* pause every infinite animation while the tab is backgrounded */
+body.tab-hidden *{
+  animation-play-state: paused !important;
+}
