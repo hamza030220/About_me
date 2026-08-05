@@ -6,11 +6,7 @@ Repo: https://github.com/hamza030220/About_me
 
 ## Before you deploy — edit these
 
-1. **Links** in `index.html`, inside `<footer class="connect">` (search for `YOUR_USERNAME`):
-   - GitHub URL
-   - LinkedIn URL
-   - Email address (`mailto:` link)
-   - Resume — add a `resume.pdf` file to this folder and the `/resume.pdf` link will work automatically.
+1. **Links** are already set in `index.html`, inside `<footer class="connect">`: GitHub, LinkedIn, and email.
 2. Optional: add a real favicon (`favicon.ico`) in this folder and link it in `<head>` if you want one.
 
 ## Deploy with Git + Vercel
